@@ -1,0 +1,273 @@
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  1c  a6  38  ff  61  81  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  c0  d9  38  ff  61  80  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  eb  2d  39  ff  61  80  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  05  95  39  ff  61  80  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  3e  c7  38  ff  61  80  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  ed  55  39  ff  61  80  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  32  f0  38  ff  61  80  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  36  3f  39  ff  61  80  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  f4  03  39  ff  61  80  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  c5  f5  38  ff  61  80  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  1e  6e  38  ff  61  80  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  41  26  39  ff  61  81  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  2c  b9  38  ff  61  80  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  f7  63  39  ff  61  81  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  93  61  39  ff  61  81  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
+nfc-poll uses libnfc libnfc-1.8.0-79-g3fa0751
+NFC reader: PN532 board via UART opened
+NFC device will poll during 36000 ms (20 pollings of 300 ms for 6 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+* UID size: double
+* bit frame anticollision supported
+       UID (NFCID1): 04  f9  b9  38  ff  61  80  
+      SAK (SEL_RES): 00  
+* Not compliant with ISO/IEC 14443-4
+* Not compliant with ISO/IEC 18092
+
+Fingerprinting based on MIFARE type Identification Procedure:
+* MIFARE Ultralight
+* MIFARE Ultralight C
+Other possible matches based on ATQA & SAK values:
+Waiting for card removing...done.
