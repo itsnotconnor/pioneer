@@ -7,7 +7,7 @@ import json
 import queue
 import threading
 import random
-
+import enum
 #local imports
 import song
 import song.Song as Song
@@ -42,8 +42,22 @@ Stop/Clear   -- 16       UID (NFCID1): 04  f9  b9  38  ff  61  80
 
 MUSIC_DIR = "/home/cnelson/Music"
 MAX_SONGS_QUEUE = 10
-NFC_READ_DUTY_CYCLE = 10 #seconds
+NFC_READ_DUTY_CYCLE = 3 #seconds
 
+class PlaybackControls(Enum):
+    """
+    ## Playback queue
+    # 0: Request Pause/Stop current song
+    # 1: Request Play current song
+    # 2: Skip to next song
+    """
+    PLAY = 1
+    STOP = 2
+    SKIP = 3
+
+def poll_nfc_reader():
+    """ Check if there is a new nfc tag placed """
+    return 1
 
 def add_songs_to_queue(nfc_uid, all_tracks, song_queue):
     """ Iterate thru tracks and add based on UID """
@@ -73,10 +87,12 @@ def add_songs_to_queue(nfc_uid, all_tracks, song_queue):
             return "Error"
 
 
-def poll_nfc_reader():
-    """ Check if there is a new nfc tag placed """
-
-    return 0
+def clear_queued_songs(song_queue):
+    while not song_queue.empty():
+        try:
+            song_queue.get_nowait()
+        except queue.Empty:
+            break
 
 def play_next_song(song_queue):
     next_song = song_queue.get()
@@ -95,38 +111,57 @@ def play_next_song(song_queue):
     except Exception as ex:
         print(ex)
 
+
+
+
 ## Thread Tasks ##
 
-def thread_nfc_worker(song_queue):
+def thread_nfc_worker(song_queue, playback_queue):
     """
     This thread will add to song_queue
     - Reads NFC reader to update song queue
-    - Sleeps every 10 seconds
+    - Sleeps every 'N' seconds
     """
-    LAST_NFC_UID = 16 #Initialize to STOP/CLEAR UUID
+    NOREAD = 0
+    previous_nfc_read = NOREAD #Initialize to NOREAD==0
     while True:
         # Read NFC on constant duty cycle
         nfc_read_uid = poll_nfc_reader()
-        if nfc_read_uid != LAST_NFC_UID:
-            #clear the queue
-            while not song_queue.empty():
-                try:
-                    song_queue.get_nowait()
-                except queue.Empty:
-                    break
-            #add new music to queue
-            add_songs_to_queue(song_queue)
-            #Update latest read
-            LAST_NFC_UID = nfc_read_uid
 
-        else:
-            ## It is the same as before, do not update the song_queue
-            print(f"Detected the same NFC read (or no read): {nfc_read_uid}")
+        match nfc_read_uid:
+            case NOREAD | previous_nfc_read:
+                #No readback from NFC card / same as before > Do nothing
+                previous_nfc_read = nfc_read_uid
+            case x if 1 <= x < 15:
+                # New songs
+                add_songs_to_queue(nfc_uid, all_tracks, song_queue)
+                playback_queue.put(PlaybackControls.PLAY)
+            case 15:
+                #Skip it
+                playback_queue.put(PlaybackControls.SKIP)
+            case 16:
+                #Clear songs in queue & stop music
+                # playback_semaphore =
+                clear_queued_songs(song_queue)
+                playback_queue.put(PlaybackControls.STOP)
 
+            case _:
+                print(f"!! Unhandled NF UID : {nfc_read_uid}")
 
         time.sleep(NFC_READ_DUTY_CYCLE)
 
-def thread_play_music(song_queue):
+
+def thread_play_music(song_queue,playback_queue):
+    previous_playback_cmd = PlaybackControls.STOP #We start up in the STOP state
+
+    while True:
+        ## check playback status
+        #
+        # check playback queue
+        #
+        # check song queue
+        #
+        # repeat
 
 
 if __name__ == "__main__":
