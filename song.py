@@ -54,6 +54,7 @@ class Song:
 
     @property
     def duration_formatted(self) -> Optional[str]:
+        """ Want this in seconds, if possible"""
         if self.duration is None:
             return None
         minutes, seconds = divmod(int(self.duration), 60)
@@ -84,18 +85,22 @@ def probe_file(path: str | Path) -> Song:
     data = json.loads(result.stdout)
     fmt = data.get("format", {})
     streams = data.get("streams", [])
-    tags = {k.lower(): v for k, v in fmt.get("tags", {}).items()}
 
-    # Separate known tags from extras
-    known = {k: tags[k] for k in KNOWN_TAGS if k in tags}
-    extra = {k: v for k, v in tags.items() if k not in KNOWN_TAGS}
-
-    # Pull audio/video stream info
+    # Merge format-level and stream-level tags (OGG stores tags on the stream)
     audio = next((s for s in streams if s.get("codec_type") == "audio"), None)
+
+    fmt_tags = {k.lower(): v for k, v in fmt.get("tags", {}).items()}
+    stream_tags = {k.lower(): v for k, v in (audio.get("tags", {}) if audio else {}).items()}
+
+    tags = {**stream_tags, **fmt_tags}  # format tags win if both exist
     has_cover = any(
         s.get("codec_type") == "video" and s.get("disposition", {}).get("attached_pic")
         for s in streams
     )
+
+    # Separate known tags from extras
+    known = {k: tags[k] for k in KNOWN_TAGS if k in tags}
+    extra = {k: v for k, v in tags.items() if k not in KNOWN_TAGS}
 
     return Song(
         path=str(path),
@@ -148,10 +153,10 @@ if __name__ == "__main__":
         print(f"  Year:     {t.date or '—'}")
         print(f"  Duration: {t.duration_formatted or '—'}")
         print(f"  Bitrate:  {f'{t.bitrate} kb/s' if t.bitrate else '—'}")
-        # print(f"  Codec:    {t.codec or '—'} @ {t.sample_rate} Hz" if t.sample_rate else f"  Codec:    {t.codec or '—'}")
-        # print(f"  Cover:    {'Yes' if t.has_cover else 'No'}")
-        # if t.extra:
-        #     print(f"  Extra:    {t.extra}")
+        print(f"  Codec:    {t.codec or '—'} @ {t.sample_rate} Hz" if t.sample_rate else f"  Codec:    {t.codec or '—'}")
+        print(f"  Cover:    {'Yes' if t.has_cover else 'No'}")
+        if t.extra:
+            print(f"  Extra:    {t.extra}")
 
 
     # Log json output
