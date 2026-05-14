@@ -7,11 +7,10 @@ import json
 import queue
 import threading
 import random
-import enum
+from enum import Enum
+from pathlib import Path
 #local imports
-import song
-import song.Song as Song
-
+from song import Song, probe_file, scan_library
 """
 True Shuffle -- 01       UID (NFCID1): 04  1c  a6  38  ff  61  81
 King Gizzard -- 02       UID (NFCID1): 04  c0  d9  38  ff  61  80
@@ -97,17 +96,21 @@ def clear_queued_songs(song_queue):
 def play_next_song(song_queue):
     next_song = song_queue.get()
     #Get next in queue, play it
-    song_path = Path(next_song.path).name
+    song_path = Path(next_song.path)
     song_duration = next_song.duration
+    print(f" SONG PATH : {song_path}   SONG DURATION: {song_duration} s ")
     try:
         # Create a player and play the track
         player = vlc.MediaPlayer(song_path)
+        print(f"Playing song:\n {song_path}")
         player.play()
         #player.pause()
         #player.stop()
         #
         ## Sleep for the song duration
-        time.sleep(song_duration)
+        time.sleep(float(song_duration)+5)
+        print("Stopping song!!")
+        player.stop()
     except Exception as ex:
         print(ex)
 
@@ -127,11 +130,12 @@ def thread_nfc_worker(song_queue, playback_queue):
     while True:
         # Read NFC on constant duty cycle
         nfc_read_uid = poll_nfc_reader()
-
         match nfc_read_uid:
-            case NOREAD | previous_nfc_read:
-                #No readback from NFC card / same as before > Do nothing
+            case 0: # Using the literal 0 works fine
                 previous_nfc_read = nfc_read_uid
+            case _ if nfc_read_uid == previous_nfc_read:
+                # Do nothing logic
+                pass
             case x if 1 <= x < 15:
                 # New songs
                 add_songs_to_queue(nfc_uid, all_tracks, song_queue)
@@ -149,6 +153,7 @@ def thread_nfc_worker(song_queue, playback_queue):
                 print(f"!! Unhandled NF UID : {nfc_read_uid}")
 
         time.sleep(NFC_READ_DUTY_CYCLE)
+        previous_nfc_read = nfc_read_uid
 
 
 def thread_play_music(song_queue,playback_queue):
@@ -162,11 +167,39 @@ def thread_play_music(song_queue,playback_queue):
         # check song queue
         #
         # repeat
+        break #todo
 
 
 if __name__ == "__main__":
 
     ## For now, just get every song by file glob. Eventually this will suck
-    all_tracks = song.scan_library(MUSIC_DIR)
-
+    all_tracks = scan_library(MUSIC_DIR)
     song_queue = queue.Queue()
+
+
+    for t in all_tracks:
+        print(f"\n{'─' * 50}")
+        print(f"  File:     {Path(t.path).name}")
+        print(f"  Title:    {t.title or '(unknown)'}")
+        print(f"  Artist:   {t.artist or '(unknown)'}")
+        print(f"  Album:    {t.album or '(unknown)'}")
+        print(f"  Track:    {t.track or '—'}")
+        print(f"  Year:     {t.date or '—'}")
+        print(f"  Duration: {t.duration_formatted or '—'}")
+        print(f"  Bitrate:  {f'{t.bitrate} kb/s' if t.bitrate else '—'}")
+        print(f"  Codec:    {t.codec or '—'} @ {t.sample_rate} Hz" if t.sample_rate else f"  Codec:    {t.codec or '—'}")
+        print(f"  Cover:    {'Yes' if t.has_cover else 'No'}")
+        if t.extra:
+            print(f"  Extra:    {t.extra}")
+
+
+    # Log json output
+    with open("tracks.json", "w") as f:
+        for t in all_tracks:
+            json.dump(t.__dict__, f, indent=4)
+
+    """
+    '/home/cnelson/Music/Linkin Park - Papercuts Singles Collection (2000 - 2023)/08 - Linkin Park - Somewhere I belong.ogg'
+    """
+    song_queue.put(all_tracks[-1])
+    play_next_song(song_queue)

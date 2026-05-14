@@ -32,6 +32,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
+KNOWN_TAGS = {"title", "artist", "album", "album_artist", "track", "date", "comment"}
+
 @dataclass
 class Song:
     #absolute file path for song
@@ -62,18 +64,17 @@ class Song:
         return f"{hours:02}:{minutes:02}:{seconds:02}" if hours else f"{minutes:02}:{seconds:02}"
 
 
-KNOWN_TAGS = {"title", "artist", "album", "album_artist", "track", "date", "comment"}
-
 
 def probe_file(path: str | Path) -> Song:
     """Run ffprobe (IN JSON MODE!!) on a file and return metadata."""
+    path_obj = Path(path).resolve()
     result = subprocess.run(
         [
             "ffprobe", "-v", "quiet",
             "-print_format", "json",
             "-show_format",
             "-show_streams",
-            str(path),
+            str(path_obj),
         ],
         capture_output=True,
         text=True,
@@ -103,7 +104,7 @@ def probe_file(path: str | Path) -> Song:
     extra = {k: v for k, v in tags.items() if k not in KNOWN_TAGS}
 
     return Song(
-        path=str(path),
+        path=str(path_obj),
         title=known.get("title"),
         artist=known.get("artist"),
         album=known.get("album"),
