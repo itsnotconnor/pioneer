@@ -3,6 +3,7 @@
 import vlc
 import time
 import os
+import sys
 import json
 import queue
 import threading
@@ -175,8 +176,7 @@ if __name__ == "__main__":
     ## For now, just get every song by file glob. Eventually this will suck
     all_tracks = scan_library(MUSIC_DIR)
     song_queue = queue.Queue()
-
-
+    """
     for t in all_tracks:
         print(f"\n{'─' * 50}")
         print(f"  File:     {Path(t.path).name}")
@@ -192,14 +192,17 @@ if __name__ == "__main__":
         if t.extra:
             print(f"  Extra:    {t.extra}")
 
-
+    """
     # Log json output
     with open("tracks.json", "w") as f:
         for t in all_tracks:
             json.dump(t.__dict__, f, indent=4)
 
+    print(f"{sys.getsizeof(all_tracks)} bytes of bangers!!")
     """
-    '/home/cnelson/Music/Linkin Park - Papercuts Singles Collection (2000 - 2023)/08 - Linkin Park - Somewhere I belong.ogg'
+    Add some random songs to a queue
     """
-    song_queue.put(all_tracks[-1])
-    play_next_song(song_queue)
+    import random
+    for _ in range(0,4):
+        song_queue.put(all_tracks[random.randint(0,len(all_tracks))])
+        play_next_song(song_queue)
